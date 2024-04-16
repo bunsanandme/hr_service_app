@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'rest_framework',
     'users'
 ]
 
@@ -75,19 +76,16 @@ WSGI_APPLICATION = 'hr_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = { 
-    'default': { 
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'hr_db', 
-        'USER': 'root', 
-        'PASSWORD': 'admin', 
-        'HOST': '127.0.0.1', 
-        'PORT': '3306', 
-        'OPTIONS': { 
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" 
-        } 
-    } 
-} 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hr_db',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': 5432,
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

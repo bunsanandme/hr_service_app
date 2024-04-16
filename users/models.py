@@ -4,14 +4,12 @@ from django.db import models
 from datetime import datetime
 
 class User(AbstractUser):
-    # first_name = models.CharField(blank=True, max_length=64)
-    # last_name = models.CharField(blank=True, max_length=64)
     birth_date = models.DateField(default=datetime.now, blank=True)
     phone_number = PhoneNumberField(blank=True)
     education = models.CharField(blank=True, max_length=128)
     document_scan = models.FileField(blank=True)
     position = models.CharField(blank=True, max_length=64)
-    photo = models.ImageField()
+    photo = models.ImageField(blank=True)
     start_job_date = models.DateField(default=datetime.now, blank=True)
 
     def __str__(self):

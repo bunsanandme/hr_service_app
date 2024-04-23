@@ -1,0 +1,8 @@
+<h1>Пользователи</h1>
+<ul>
+{% for user in object_list %}
+    <li>{{ user.username }} - {{user.email }}</li>
+{% empty %}
+    <li>Никого :(</li>
+{% endfor %}
+</ul>

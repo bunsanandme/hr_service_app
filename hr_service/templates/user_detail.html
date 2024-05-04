@@ -1,6 +1,93 @@
-<h1>{{ object.username}}</h1>
-<span class='lead'>ИМЯ - {{ object.first_name }} </span> <br>
-<span class='lead'>ФАМИЛИЯ - {{ object.last_name }} </span><br>
-<span class='lead'>ДОЛЖНОСТЬ - {{ object.position }} </span><br>
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block content %}
 
 
+<section class="section">
+    <div class="container">
+        <div class="columns has-same-height">
+            <div class="column is-one-third">
+                <figure class="image is-square">
+                    {% if user.photo %}
+                    {% thumbnail user.photo "415x415" crop="center" as im %}
+                    <img src="{{im.url}}">
+                    {% endthumbnail %}
+                    {% else %}
+                    <img src="https://via.placeholder.com/415x415.png?text=Нет фото">
+                    {% endif %}
+                </figure>
+            </div>
+            <div class="column">
+                <section class="hero is-green welcome is-small">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="title is-white">
+                                {{user.first_name}} {{user.last_name}}
+                            </h1>
+                            <h2 class="subtitle is-white">
+                                Логин в системе {{user.username}}
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="columns is-gapless">
+                                <div class="column">
+                                    <h3 class="title is-5">Контактный
+                                        телефон</h3>
+                                    <p>{{user.get_formatted_phone_number}}</p>
+                                    <br>
+                                    <h3 class="title is-5">Электронная
+                                        почта</h3>
+                                    <p>{{user.email}}</p>
+                                </div>
+                                <div class="column">
+                                    <h3 class="title is-5">Должность</h3>
+                                    <p>{{user.position}}</p>
+                                    <br>
+                                    <h3 class="title is-5">Дата начала
+                                        работы</h3>
+                                    <p>{{user.start_job_date|date:"d/m/Y"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="container">
+            <section class="hero is-green welcome is-small">
+                <div class="hero-body">
+                        <h1 class="title is-white">
+                           Образование
+                        </h1>
+                </div>
+            </section>
+            <div class="card">
+                <div class="card-content">
+                    <div class="content ">
+                        <div class="columns is-gapless ">
+                            <div class="column ">
+                                <h3 class="title is-5">Место обучения</h3>
+                                <p>{{user.education}}</p>
+                            </div>
+                            {% if user.document_scan %}
+                            <div class="column">
+                                <h3 class="title is-5">Загруженный документ</h3>
+                                <a href="{{user.document_scan.url}}"> Просмотреть документ</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    {% endblock %}

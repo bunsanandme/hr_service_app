@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load thumbnail %}
+
+{% block content %}
+
+<main>
+    <section class="section">
+        <div class="container">
+            <br>
+
+            <form method="POST" action="{% url 'user-update' user.pk %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="columns has-same-height">
+                  <div class="column is-one-third">
+                      <figure class="image is-square">
+                          {% if user.photo %}
+                          {% thumbnail user.photo "300x300" crop="center" as im %}
+                          <img src="{{im.url}}">
+                          {% endthumbnail %}
+                          {% else %}
+                          <img src="https://via.placeholder.com/300x300.png?text=Нет фото">
+                          {% endif %}
+                      </figure>
+                      <br>
+                      <label class="file-label">
+                        {% render_field form.photo type="file" accept="image/png, image/jpeg" style="display:none;" %}
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">Выбрать файл</span>
+                        </span>
+                      </label>
+                  </div>
+
+                <div class="column">
+                <div class="container">
+                  <h2 class="title is-white">
+                      Основная информация
+                  </h2>
+                  <br>
+              </div>
+                <div class="box">
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Имя</label>
+                            <div class="control">
+                                {% render_field form.first_name class="input" style="width: 400px" %}
+                            </div>
+                        </div>
+                        <div class="field">
+                          <label class="label">Фамилия</label>
+                          <div class="control">
+                              {% render_field form.last_name class="input" style="width: 400px" %}
+                          </div>
+                      </div>
+                      <div class="field">
+                        <label class="label">Должность</label>
+                        <div class="control">
+                            {% render_field form.position class="input" style="width: 400px;" %}
+                        </div>
+                    </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Дата рождения</label>
+                            <div class="control">
+                                {% render_field form.birth_date class="input" style="width: 400px" %}
+                            </div>
+                        </div>
+                        <div class="field">
+                          <label class="label">Номер телефона</label>
+                          <div class="control">
+                              {% render_field form.phone_number class="input" type="tel" style="width: 400px" %}
+                          </div>
+                      </div>
+                      <div class="field">
+                        <label class="label">Дата выхода на работу</label>
+                        <div class="control">
+                            {% render_field form.start_job_date class="input" type="date" style="width: 400px;" %}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <h2 class="title is-white">
+                  Информация профиля
+                  <br>
+              </h2>
+
+                <div class="box">
+                  <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Логин</label>
+                            <div class="control">
+                                {% render_field form.username class="input" style="width: 500px;" %}
+                            </div>
+                        </div>
+                        <div class="field">
+                          <label class="label">Email</label>
+                          <div class="control">
+                              {% render_field form.email class="input" style="width: 500px;" %}
+                          </div>
+                      </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Изменить пароль</label>
+                            {% if not user.password %}
+                              <p>ВНИМАНИЕ! У ПОЛЬЗОВАТЕЛЯ НЕТ ПАРОЛЯ!</p>
+                            {% endif %}
+                            <div class="control">
+                                <input name="changed_password" class="input" style="width: 500px;"></input>
+                                <p class="help">Оставьте это поле пустым для сохранения пароля</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+                  <h2 class="title is-white">
+                      Доп. информация
+                      <br>
+                  </h2>
+
+                  <div class="box">
+                    <div class="columns">
+                      <div class="column">
+                          <div class="field">
+                              <label class="label">Образование</label>
+
+                                  {% render_field form.education class="textarea has-fixed-size" style="resize: none; width: 500px; height: 88px;" %}
+
+                          </div>
+                      </div>
+                      <div class="column">
+                          <div class="field">
+                              <label class="label">Документы об образовании</label>
+                              {% if user.document_scan %}
+                              <label class="file-label">Текущий файл: &nbsp <a href="{{user.document_scan.url}}"> {{user.document_scan}}</a></label>
+                              {% else %}
+                              <label class="file-label">Нет загруженных документов!</label>
+                              {% endif %}
+                              <br>
+                                <label class="file-label">
+                                  {% render_field form.document_scan type="file" style="display:none;" %}
+                                  <span class="file-cta">
+                                    <span class="file-icon">
+                                      <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">Выбрать файл</span>
+                                  </span>
+                                </label>
+                              </div>
+                              <br>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+
+                <br>
+                <br>
+                <input type="submit" class="button is-success is-large" value="Изменить">
+
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}

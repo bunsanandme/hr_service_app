@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<main>
+  <section class="section">
+      <div class="container">
+          <br>
+          <form method="POST" action="{% url 'user-create' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="columns has-same-height">
+              <div class="column">
+              <div class="container">
+                <h2 class="title is-white">
+                    Основная информация
+                </h2>
+                <br>
+            </div>
+              <div class="box">
+              <div class="columns">
+                  <div class="column">
+                      <div class="field">
+                          <label class="label">Имя</label>
+                          <div class="control">
+                              {% render_field form.first_name class="input" style="width: 400px" %}
+                          </div>
+                      </div>
+                      <div class="field">
+                        <label class="label">Фамилия</label>
+                        <div class="control">
+                            {% render_field form.last_name class="input" style="width: 400px" %}
+                        </div>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="field">
+                      <label class="label">Логин в системе</label>
+                      <div class="control">
+                          {% render_field form.username class="input" style="width: 400px;" %}
+                      </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Электронная почта</label>
+                    <div class="control">
+                        {% render_field form.email class="input" style="width: 400px;" %}
+                    </div>
+                </div>
+                  </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              
+
+              <br>
+              <input type="submit" class="button is-success is-large" value="Создать">
+
+          </form>
+      </div>
+  </section>
+</main>
+{% endblock %}
+

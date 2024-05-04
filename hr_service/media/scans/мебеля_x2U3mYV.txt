@@ -1,0 +1,52 @@
+Желтые кресла
+models/props_interiors/Furniture_Couch02a.mdl 2 Штуки
+
+Кофейный столик
+models/props_c17/FurnitureTable003a.mdl 1 штука
+
+Столик с зеркалом
+models/props_interiors/Furniture_Vanity01a.mdl
+
+Книжные полки
+models/props_interiors/Furniture_shelf01a.mdl 2 шт
+
+Полка деревянная
+models/props_office/wallshelf_56u.mdl 2 шт
+
+Доска буковая для записок
+models/props_lab/corkboard001.mdl
+
+Картина
+models/props_office/pictureframe04.mdl
+
+Бюст
+models/props_combine/breenbust.mdl
+
+Узкая тумба
+models/props_c17/furnituredrawer003a.mdl
+
+Полка для обуви
+models/props_c17/FurnitureShelf002a.mdl
+
+Принтер
+models/props_lab/plotter.mdl
+
+Тумбочка
+models/props_c17/FurnitureDrawer002a.mdl 2 шт
+
+Рабочий стол
+models/props_office/table_rounded_static.mdl
+
+Компьютерный стул
+models/props_office/office_chair.mdl
+
+Комод
+models/props_c17/FurnitureDrawer001a.mdl
+
+Компьютер
+models/props_office/computer_desktop01.mdl
+
+
+
+
+

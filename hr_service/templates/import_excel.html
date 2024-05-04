@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <br>
+        <h1 class="title is-white">
+            Импорт данных из Excel
+        </h1>
+        <br>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                        <div class="columns has-same-height">
+                            <div class="column">
+                                <label class="file-label">
+                                    <input type="file" name="excel_file"
+                                        style="display: none;">
+                                    <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">Выбрать
+                                            файл</span>
+                                    </span>
+                                </label>
+                                
+                            </div>
+                            <div class="column">
+                                <button type="submit" class="button is-success">Провести импорт</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <h1 class="title is-white">
+            Полученные данные
+        </h1>
+        <div class="card">
+            <div class="card-content">
+                <div class="content">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sorl.thumbnail',
-    'import_export',
     'widget_tweaks',
     'phonenumber_field',
     "users"
